@@ -5,13 +5,19 @@ import { Github, Linkedin, Mail, Phone, User } from 'lucide-react'
 // PROFILE IMAGE LOADING STRATEGY
 // - Uses GitHub avatar by default (no local file required)
 // - If you later add /public/profile.jpg or /public/profile.webp, they will be tried first
+// ...
 const GITHUB_USERNAME = 'jawwad9226'
 const SIMPLE_SRC = `https://github.com/${GITHUB_USERNAME}.png?size=320`
+
+// Use the base path so URLs work on GitHub Pages (e.g., /Myportfolio/)
+const PUBLIC_BASE = import.meta.env.BASE_URL || '/'
+
 const CANDIDATE_SRCS = [
-  '/profile.webp', // optional
-  '/profile.jpg',  // optional
-  SIMPLE_SRC,      // always available
+  `${PUBLIC_BASE}profile.webp`, // optional (if you add it later)
+  `${PUBLIC_BASE}profile.jpg`,  // your uploaded image in public/
+  SIMPLE_SRC,                   // always available fallback (GitHub avatar)
 ]
+// ...
 
 // Default palette (khaki + red accents) if extraction fails
 const DEFAULT_PALETTE = {
